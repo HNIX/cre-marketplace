@@ -1,0 +1,28 @@
+<div class="col-md-6 col-md-offset-3 panel panel-default">
+  <div class="panel-body">
+    <h2>Create Account</h2>
+    <%= simple_form_for(@account, wrapper: :vertical_form) do |f| %>
+      <div class="form-inputs">
+        <%= f.simple_fields_for :owner do |owner| %>
+          <%= owner.input :name, wrapper: :vertical_input_group do %>
+            <%= owner.input_field :name, class: "form-control" %>
+          <% end %>
+          <%= owner.input :email, wrapper: :vertical_input_group do %>
+            <%= owner.input_field :email, class: "form-control" %>
+          <% end %>
+          <%= owner.input :password, wrapper: :vertical_input_group do %>
+            <%= owner.password_field :password, class: "form-control" %>
+          <% end %>
+          <%= owner.input :password_confirmation, wrapper: :vertical_input_group do %>
+            <%= owner.password_field :password_confirmation, class: "form-control" %>
+          <% end %>
+        <% end %>
+        <%= f.input :subdomain, wrapper: :vertical_input_group, hint: "subdomain should not contain spaces or symbols." do %>
+          <%= f.input_field :subdomain, class: "form-control" %>
+          <span class="input-group-addon">creconsole.com</span>
+        <% end %>
+      </div>
+      <%= f.button :submit, class:"btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: cre-marketplace_development
+  host: localhost
+
+
+test:
+  <<: *default
+  database: cre-marketplace_test
+  host: localhost
+
+production:
+  <<: *default
+  database: cre-marketplace_production
+  username: cre-marketplace
+  password: <%= ENV['CRE-MARKETPLACE_DATABASE_PASSWORD'] %>
