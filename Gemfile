@@ -13,6 +13,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'simple_form'
 gem 'devise'
 gem 'apartment', '~> 1.2'
+gem 'devise_invitable', '~> 1.7.0'
+
 
 
 
@@ -27,6 +29,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
+  gem 'letter_opener'
+  gem 'email_spec'
 end
 
 group :development do
