@@ -3,11 +3,11 @@
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
-      <%= f.input :email, wrapper: :vertical_input_group, label: false do %>
+      <%= f.input :email, wrapper: :vertical_input_group do %>
         <%= f.input_field :email, class: "form-control input-lg", placeholder: "Email" %>
         <span class="input-group-addon glyphicon glyphicon-user"></span>
       <% end %>
-      <%= f.input :password, wrapper: :vertical_input_group, label: false do %>
+      <%= f.input :password, wrapper: :vertical_input_group do %>
         <%= f.password_field :password, class: "form-control input-lg", placeholder: "Password" %>
         <span class="input-group-addon glyphicon glyphicon-lock"></span>
       <% end %>

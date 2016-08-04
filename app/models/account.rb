@@ -1,6 +1,6 @@
 class Account < ActiveRecord::Base
   RESTRICTED_SUBDOMAINS = %w(www)
-
+  # after_create :create_tenant
   belongs_to :owner, class_name: 'User'
 
   validates :owner, presence: true
@@ -14,10 +14,16 @@ class Account < ActiveRecord::Base
 
   before_validation :downcase_subdomain
 
+
   private
-  def downcase_subdomain
-    self.subdomain = subdomain.try(:downcase)
-  end
+
+    def create_tenant
+      Apartment::Tenant.create(subdomain)
+    end
+
+    def downcase_subdomain
+      self.subdomain = subdomain.try(:downcase)
+    end
 
 
 end

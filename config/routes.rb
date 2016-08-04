@@ -1,5 +1,25 @@
+class SubdomainPresent
+  def self.matches?(request)
+    subdomains = %w{ www admin }
+    request.subdomain.present? && !subdomains.include?(request.subdomain)
+  end
+end
+
+class SubdomainBlank
+  def self.matches?(request)
+    request.subdomain.blank?
+  end
+end
+
 Rails.application.routes.draw do
-  devise_for :users
-  root 'welcome#index'
-  resources :accounts
+  constraints(SubdomainPresent) do
+    root 'listings#index', as: :subdomain_root
+    devise_for :users
+    resources :users, only: :index
+  end
+
+  constraints(SubdomainBlank) do
+    root 'welcome#index'
+    resources :accounts, only: [:new, :create]
+  end
 end
