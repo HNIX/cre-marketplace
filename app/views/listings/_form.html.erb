@@ -1,0 +1,11 @@
+<%= simple_form_for(@listing,
+                    wrapper_mappings: { boolean: :vertical_boolean }) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :city %>
+  <%= f.input :state %>
+  <%= f.input :zipcode %>
+  <%= f.input :active, as: :boolean %>
+
+  <%= f.button :submit, class: "btn-primary" %>
+<% end %>

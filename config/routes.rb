@@ -16,10 +16,12 @@ Rails.application.routes.draw do
     root 'listings#index', as: :subdomain_root
     devise_for :users
     resources :users, only: :index
+    resources :listings
   end
 
   constraints(SubdomainBlank) do
     root 'welcome#index'
     resources :accounts, only: [:new, :create]
+    resources :listings, only: :show
   end
 end
