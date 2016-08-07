@@ -23,5 +23,6 @@ Rails.application.routes.draw do
     root 'welcome#index'
     resources :accounts, only: [:new, :create]
     resources :listings, only: [:index, :show]
+    devise_for :investors
   end
 end

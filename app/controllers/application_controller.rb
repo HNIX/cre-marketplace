@@ -37,7 +37,14 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource_or_scope)
-    new_user_session_path
+    case resource_or_scope
+      when :user, User
+        new_user_session_path
+      when :investor, Investor
+        root_url(subdomain: false)
+      else
+        super
+    end
   end
 
   def after_invite_path_for(resource)
