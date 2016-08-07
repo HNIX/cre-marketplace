@@ -24,5 +24,6 @@ Rails.application.routes.draw do
     resources :accounts, only: [:new, :create]
     resources :listings, only: [:index, :show]
     devise_for :investors
+    get "*id" => 'pages#show', as: :page, format: false
   end
 end

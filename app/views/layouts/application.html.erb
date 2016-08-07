@@ -24,6 +24,12 @@
       <div class="pull-right right-buttons">
         <%= link_to "Sign out", destroy_investor_session_path, method: 'delete', class: "btn btn-default navbar-btn" %>
       </div>
+    <% else %>
+      <div class="pull-right right-buttons">
+        <%= link_to 'Buy', page_path('buy'), class: "btn btn-default navbar-btn" %>
+        <%= link_to 'Sell', page_path('sell'), class: "btn btn-default navbar-btn" %>
+        <%= link_to 'Contact', page_path('contact'), class: "btn btn-default navbar-btn" %>
+      </div>
     <% end %>
   </nav>
 </header>
