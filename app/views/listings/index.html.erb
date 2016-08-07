@@ -3,12 +3,14 @@
     <h3>
       <%= listing.name %>
       <small><%= listing.address %></small>
-      <div class="pull-right">
-        <%= link_to edit_listing_path(listing), class: "icon-link" do %>
-          <small><i class="glyphicon glyphicon-cog"></i></small>
-        <% end %>
-        <small><i class="glyphicon glyphicon-plus-sign"></i></small>
-      </div>
+      <% if user_signed_in? %>
+        <div class="pull-right">
+          <%= link_to edit_listing_path(listing), class: "icon-link" do %>
+            <small><i class="glyphicon glyphicon-cog"></i></small>
+          <% end %>
+          <small><i class="glyphicon glyphicon-plus-sign"></i></small>
+        </div>
+      <% end %>
     </h3>
 
     <ul class="list-group">

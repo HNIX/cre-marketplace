@@ -14,7 +14,12 @@ describe 'subdomains' do
   end
 
   it 'forces users to login before accessing subdomain content' do
+    listing = create(:listing)
     visit root_url(subdomain: account.subdomain)
+    within find("h3", text: listing.name) do
+      page.first("a").click
+    end
     expect(page).to have_content 'sign in or sign up before continuing'
   end
+
 end

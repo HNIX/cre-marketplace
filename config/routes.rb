@@ -22,6 +22,6 @@ Rails.application.routes.draw do
   constraints(SubdomainBlank) do
     root 'welcome#index'
     resources :accounts, only: [:new, :create]
-    resources :listings, only: :show
+    resources :listings, only: [:index, :show]
   end
 end

@@ -1,6 +1,12 @@
 class ListingsController < ApplicationController
+  skip_before_filter :authenticate_user!, only: :index
+
   def index
-    @listings = Listing.all
+    if user_signed_in?
+      @listings = Listing.where(account_id: @current_account.id)
+    else
+      @listings = Listing.where(active: true)
+    end
   end
 
   def new
@@ -9,6 +15,7 @@ class ListingsController < ApplicationController
 
   def create
     @listing = Listing.new(listing_params)
+    @listing.account_id = @current_account.id
     if @listing.save
       redirect_to listings_path, notice: "Listing created!"
     else
@@ -32,6 +39,6 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:name, :address, :city, :state, :zipcode, :active)
+    params.require(:listing).permit(:name, :address, :city, :state, :zipcode, :active, :account_id)
   end
 end

@@ -4,6 +4,7 @@ describe 'invitations' do
   let!(:account) { create(:account_with_schema) }
   let(:user) { account.owner }
 
+
   before do
     set_subdomain(account.subdomain)
     sign_user_in(user)
@@ -32,8 +33,6 @@ describe 'invitations' do
   end
 
   it 'allows listings to be edited' do
-    listing = create(:listing)
-
     visit root_path
     click_edit_listing_button listing.name
 

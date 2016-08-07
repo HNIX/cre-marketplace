@@ -2,6 +2,7 @@ class Account < ActiveRecord::Base
   RESTRICTED_SUBDOMAINS = %w(www)
   # after_create :create_tenant
   belongs_to :owner, class_name: 'User'
+  has_many :listings
 
   validates :owner, presence: true
 
